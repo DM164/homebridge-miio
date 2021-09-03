@@ -66,7 +66,7 @@ export class ExamplePlatformAccessory {
       .then(device => {
         console.log(device);
         // Get if the light is on
-        device.setPower(true)
+        device.setPower(value)
           .then()
           .catch();
         // device.setBrightness(50)
