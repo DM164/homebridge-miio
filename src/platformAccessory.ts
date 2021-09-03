@@ -2,7 +2,7 @@ import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 
 import { ExampleHomebridgePlatform } from './platform';
 
-import { miio } from 'miio';
+import * as miio from '../node_modules/miio';
 
 /**
  * Platform Accessory
@@ -64,15 +64,16 @@ export class ExamplePlatformAccessory {
     // Resolve a device, resolving the token automatically or from storage
     miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
       .then(device => {
+        console.log(device);
         // Get if the light is on
-        device.setPower(value)
+        device.setPower(true)
           .then()
-          .catch(err => this.platform.log.debug('Error Xiaomi Light: ', err));
+          .catch();
         // device.setBrightness(50)
         //   .then()
         //   .catch();
       })
-      .catch();
+      .catch(err => console.log(err));
 
     this.platform.log.debug('Set Characteristic On ->', value);
   }
