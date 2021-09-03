@@ -67,7 +67,7 @@ export class ExamplePlatformAccessory {
         // Get if the light is on
         device.setPower(value)
           .then()
-          .catch();
+          .catch(err => this.platform.log.debug('Error Xiaomi Light: ', err));
         // device.setBrightness(50)
         //   .then()
         //   .catch();
