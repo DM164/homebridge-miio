@@ -69,9 +69,6 @@ export class ExamplePlatformAccessory {
         device.setPower(value)
           .then()
           .catch();
-        // device.setBrightness(50)
-        //   .then()
-        //   .catch();
       })
       .catch(err => console.log(err));
 
@@ -110,6 +107,17 @@ export class ExamplePlatformAccessory {
   async setBrightness(value: CharacteristicValue) {
     // implement your own code to set the brightness
     this.exampleStates.Brightness = value as number;
+
+    // Resolve a device, resolving the token automatically or from storage
+    miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+      .then(device => {
+        console.log(device);
+        // Get if the light is on
+        device.setBrightness(value)
+          .then()
+          .catch();
+      })
+      .catch(err => console.log(err));
 
     this.platform.log.debug('Set Characteristic Brightness -> ', value);
   }
