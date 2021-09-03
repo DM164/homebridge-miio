@@ -2,6 +2,8 @@ import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 
 import { ExampleHomebridgePlatform } from './platform';
 
+import { miio } from 'miio';
+
 /**
  * Platform Accessory
  * An instance of this class is created for each accessory your platform registers
@@ -58,6 +60,19 @@ export class ExamplePlatformAccessory {
   async setOn(value: CharacteristicValue) {
     // implement your own code to turn your device on/off
     this.exampleStates.On = value as boolean;
+
+    // Resolve a device, resolving the token automatically or from storage
+    miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+      .then(device => {
+        // Get if the light is on
+        device.setPower(value)
+          .then()
+          .catch();
+        // device.setBrightness(50)
+        //   .then()
+        //   .catch();
+      })
+      .catch();
 
     this.platform.log.debug('Set Characteristic On ->', value);
   }
