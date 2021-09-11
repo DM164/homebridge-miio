@@ -92,23 +92,23 @@ export class ExamplePlatformAccessory {
     // implement your own code to check if the device is on
     let isOn = false;
 
-    this.platform.log.debug('Get Characteristic On ->', isOn);
-
-    miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+    await miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
       .then(device => {
         console.log(device);
         // Get if the light is on
         device.power()
           .then(arg => {
             isOn = arg;
-            return isOn;
           });
       })
       .catch(err => console.log(err));
 
+    this.platform.log.debug('Get Characteristic On ->', isOn);
+
     // if you need to return an error to show the device as "Not Responding" in the Home app:
     // throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
 
+    return isOn;
   }
 
   /**
