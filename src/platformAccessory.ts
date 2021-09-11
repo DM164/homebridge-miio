@@ -101,6 +101,7 @@ export class ExamplePlatformAccessory {
         device.power()
           .then(arg => {
             isOn = arg;
+            return isOn;
           });
       })
       .catch(err => console.log(err));
@@ -108,7 +109,6 @@ export class ExamplePlatformAccessory {
     // if you need to return an error to show the device as "Not Responding" in the Home app:
     // throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
 
-    return isOn;
   }
 
   /**
