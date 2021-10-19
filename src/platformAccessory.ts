@@ -62,7 +62,7 @@ export class ExamplePlatformAccessory {
     this.exampleStates.On = value as boolean;
 
     // Resolve a device, resolving the token automatically or from storage
-    miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+    miio.device({ address: '192.168.1.12', token: 'e12e382dcc92306ca841dffdafe77f5f' })
       .then(device => {
         console.log(device);
         // Get if the light is on
@@ -92,7 +92,7 @@ export class ExamplePlatformAccessory {
     // implement your own code to check if the device is on
     let isOn = false;
 
-    await miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+    await miio.device({ address: '192.168.1.12', token: 'e12e382dcc92306ca841dffdafe77f5f' })
       .then(device => {
         console.log(device);
         // Get if the light is on
@@ -120,7 +120,7 @@ export class ExamplePlatformAccessory {
     this.exampleStates.Brightness = value as number;
 
     // Resolve a device, resolving the token automatically or from storage
-    miio.device({ address: '192.168.1.18', token: 'e12e382dcc92306ca841dffdafe77f5f' })
+    miio.device({ address: '192.168.1.12', token: 'e12e382dcc92306ca841dffdafe77f5f' })
       .then(device => {
         console.log(device);
         // Get if the light is on
