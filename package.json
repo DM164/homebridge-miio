@@ -27,7 +27,7 @@
     "homebridge-plugin"
   ],
   "dependencies": {
-    "miio": "^0.15.6"
+    "mijia-io": "^0.18.5"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
